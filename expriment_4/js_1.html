@@ -1,0 +1,31 @@
+<html>
+    <head>
+        
+       
+        <title>behavior</title>	
+        <style type="text/css">
+      
+        div{
+            width: 1120px;
+            background-color:rgba(255,255,255,0.5);
+            margin:auto;
+        }
+        </style>
+    </head>
+    <body onload="alert('body_onload,这时候背景未加载完，卡住了')">
+        <div id="muji_">
+            <p class="ji">请点击“图片”</p>
+            <button id="muji" onclick="one()">图片</button>
+            
+        </div>
+        <div id="图片1"></div>
+        
+    </body>
+    <script>
+        function one(){
+            var newimg =document.createElement("img");
+            newimg.src="贪玩蓝月";
+            document.getElementById('图片1').append(newimg);
+        }
+    </script>
+</html>
