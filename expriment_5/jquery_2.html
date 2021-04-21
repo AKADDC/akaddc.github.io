@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+<style>
+#one{
+    text-align: center;
+}
+
+</style>
+
+</head>
+<body>
+<div id="one">
+<h2 id="01">你好！！！！</h2>
+<h3 id="02">你吃了嘛？</h2>
+<h2 id="03">回答</h2>
+<h2 id="04"></h2>
+<h2 id="05"></h2>
+</div>
+<button id="jquery">用jquery回答</button>
+</body>
+<script>
+    $(document).ready(function() {
+        $("button#jquery").click(function(){
+            var myElement = $("#03");
+            myElement.text("吃了!");
+            var myElement = $("#04");
+            myElement.html("<button id='或者没吃'>或者没吃!</button>");
+            $("button#或者没吃").click(function(){
+            var myElement = $("#05");
+            myElement.text("我请你吃！");
+            });
+        });
+    });
+    </script>
+</html>
