@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+</script>
+<script> 
+$(document).ready(function(){
+  $("button").click(function(){
+    $("div").animate({
+      left:'250px',
+      opacity:'0.5',
+      height:'250px',
+      width:'250px',
+    });
+  });
+});
+</script> 
+</head>
+ 
+<body>
+  
+<button>开始动画</button>
+<p>点击图按钮进行动画</p> 
+
+<div  style="height:100px;width:100px;position:absolute;">
+<img src="" alt="none"></div>
+
+</body>
+</html>
