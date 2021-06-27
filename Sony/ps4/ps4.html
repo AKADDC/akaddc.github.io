@@ -1,0 +1,414 @@
+</div><!DOCTYPE html>
+<html>
+<head>
+    <script src='jquery.min.js'></script>
+    <script src='jqueryzoom.js'></script>
+<style>/*现在都是在CSS里面整活*/
+    div.gameInformation p{  
+        color: black;
+        font-size: 25px; /* 字体大小 */
+    }
+    div{
+        border: 0px solid white;}
+    body {
+        margin: 0px;   /*设置外边距为0，方便其调试*/
+        padding: 0px;  /*设置内边距为0*/
+    }
+    .gameInfomationBackground{
+        opacity: 0.5;
+    }
+    .swtich-button { /* 按钮美化 */
+        width: 270px; /* 宽度 */
+        height: 40px; /* 高度 */
+        border-width: 0px; /* 边框宽度 */
+        border-radius: 3px; /* 边框半径 */
+        background: #3b99f8; /* 背景颜色 */
+        cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+        outline: none; /* 不显示轮廓线 */
+        font-family: Microsoft YaHei; /* 设置字体 */
+        color: white; /* 字体颜色 */
+        font-size: 20px; /* 字体大小 */
+    }
+    .swtich-button:hover { /* 鼠标移入按钮范围时改变颜色 */
+        background: #0066ff;
+    }
+    .dropbtn {                           /*定义了导航栏的button*/
+        transition: all 0.2s;            /*设置过渡效果效果时长*/
+        width: 180px;;height:100px;
+        background-color: rgba(9, 156, 71, 0);/*设置背景颜色*/
+        color: rgb(34, 33, 33);
+        padding: 1px;
+        font-size: 25px;/*用于设定字体大小*/
+        border: none;
+        cursor: pointer;/*设置鼠标放上对象时候的鼠标图标，这里设置为pointer*/}
+    .dropdown {                         /*定义的是下拉菜单栏的相关参数，就是上面的导航目录*/
+        text-align: left;/*文本对齐格式*/
+        position: relative;}
+    .dropdown-content {                 /*定义的是下拉菜单的相应的数据*/
+        width: auto;              
+        display: none;                  /*先讲其设定为none，其先不显示*/
+        position: absolute;             /*设定其出现的相对位置*/
+        z-index: 999;                   /*一旦其能显示，则必然显示在最顶层*/
+        left: 0px;top: 100px;
+        background-color:rgba(217, 221, 238, 1);
+        box-shadow: 10px 10px 5px #161616;}
+    .dropdown-content a {               /*设定下拉菜单中的元素的相关参数*/
+        font-size: 20px; /* 字体大小 */
+        width: 150px;
+        color: rgb(11, 153, 248);
+        padding: 8px 10px;
+        text-decoration: none;          /*设定文本的下划线为无*/
+        display: block;}
+    .dropdown-content a:hover {
+        background-color:rgba(255, 255, 255, 0.2)}/*设定其鼠标停在目标上面后的修饰效果*/
+    .dropdown:hover .dropdown-content {
+        display:flex;}                              
+    .dropdown:hover .dropbtn {
+        background-color: rgba(255, 255, 255, 0.0);
+        font-size: 40px;
+        text-decoration:underline;}
+    .animaDiv_1{
+        position: absolute;
+        animation: move1 8s infinite;}/*设定图片的实现move1函数，并在8s内完成*/
+    .animaDiv_2{
+        position: absolute;
+        animation: move2 8s infinite;}
+    .animaDiv_3{
+        position: absolute;
+        animation: move3 8s infinite;}
+    @keyframes move1{
+        0%{left:0px;z-index: 50;width: 70%;}
+        3%{left:30%;z-index: 100;width: 70%;}
+        33%{left:30%;z-index: 100;width: 70%;}
+        36%{left:70%;z-index: 0;width: 30%;}
+        66%{left:70%;z-index: 0;width: 30%;}
+        69%{left:0px;z-index: 50;width: 70%;}
+        100%{left:0px;z-index: 50;width: 70%;}
+    }
+    @keyframes move2{
+        0%{left:30%;z-index: 100;width: 70%;}
+        3%{left:70%;z-index: 0;width: 30%;}
+        33%{left:70%;z-index: 0;width: 30%;}
+        36%{left:0px;z-index: 50;width: 70%;}
+        66%{left:0px;z-index: 50;width: 70%;}
+        69%{left:30%;z-index: 100;width: 70%;}
+        100%{left:30%;z-index: 100;width: 70%;}
+    }
+    @keyframes move3{
+        0%{left:70%;z-index: 0;width: 30%;}
+        3%{left:0px;z-index: 50;width: 70%;}
+        33%{left:0px;z-index: 50;width: 70%;}
+        36%{left:30%;z-index: 100;width: 70%}
+        66%{left:30%;z-index: 100;width: 70%}
+        69%{left:70%;z-index: 0;width: 30%;}
+        100%{left:70%;z-index: 0;width: 30%;}
+    }
+</style>
+</head>
+ 
+<body>
+<div id="background" style="position: fixed;width: 100%;">
+    <img src="huise.jpg" style="width: 100%;">
+</div>
+
+<div id = 'nav' style="position: absolute;left: 0px;top: 0px;width: 100%;height: 100px;display: flex;">
+    <div class="dropdown" style="width: 10%;height: 100px;">
+        <button class="dropbtn"><a href="../../nav/nav.html">Home</a></button></div>
+
+    <div class="dropdown" style="width: 10%;height: 100px;">
+        <button class="dropbtn">Xbox</button>
+        <div class="dropdown-content">
+            <div style="width: 50%;">
+                <a href="../../Microsoft/Xbox/Xbox.html"> Xbox</a>
+                <a href="../../Microsoft/Xbox 360/Xbox 360.html">Xbox 360</a>
+                <a href="../../Microsoft/Xbox one/Xbox One.html">Xbox One</a>   
+                <a href="../../Microsoft/Xbox Series/Xbox Series.html">Xbox Series</a>
+    </div></div></div>
+
+    <div class="dropdown" style="width: 10%;height: 100px;">
+        <button class="dropbtn">Sony</button>
+        <div class="dropdown-content">
+            <div>
+                <a href="../../Sony/ps1/ps1.html">PlayStation</a>
+                <a href="../../Sony/ps2/ps2.html">PlayStation 2</a>
+                <a href="../../Sony/ps3/ps3.html">PlayStation 3</a>
+                <a href="../../Sony/ps4/ps4.html">PlayStation 4</a>  
+                <a href="../../Sony/ps5/ps5.html">PlayStation 5</a>
+    </div></div></div>
+
+    <div class="dropdown" style="width: 10%;height: 100px;">
+        <button class="dropbtn">Nintendo</button>
+        <div class="dropdown-content">
+            <div>
+                <a href="../../Nintendo/Nintendo Switch/Nintendo Switch.html"> Nintendo Switch</a>
+                <a href="../../Nintendo/Wii/Wii.html">Wii</a>
+                <a href="../../Nintendo/超级任天堂/超级任天堂.html">超级任天堂</a>                
+                <a href="../../Nintendo/任天堂64/任天堂64.html">任天堂64</a>
+                <a href="../../Nintendo/任天堂GameCube/任天堂GameCube.html">Wii</a>
+                <a href="../../Nintendo/红白机/红白机.html">红白机</a>
+    </div></div></div>
+
+    <div style="width: 10%;height: 100px;"></div>
+    <div style="width: 10%;height: 100px;"></div>
+    <div style="width: 10%;height: 100px;"></div>
+    <div style="width: 10%;height: 100px;"></div>
+    <div style="width: 10%;height: 100px;"></div>
+    <div class="dropdown" style="width: 10%;height: 100px;">
+        <button class="dropbtn">LogIn</button>
+        <div class="dropdown-content">
+            <div>
+                
+    </div></div></div>
+</div>
+<hr style="position: absolute;left: 0px;top: 90px;height: 0px;width: 100%;">
+<div id="comtent" style="position: relative;top: 130px;width: 70%;left: 15%;height:auto;background-color:rgba(255, 255, 255, 0.3);">
+    <div id="anima_S" style="position:relative; width: 100%;height:500px;" onmouseover="paused_all()" onmouseout="continue_all()">
+        <div class="animaDiv_1" style="height: 500px;;"><video id=video src="./Xbox Series S.mkv" controls="controls" poster="./ps4_3.jpg" width=100% height=100%></video></div>
+        <div class="animaDiv_2" style="height: 500px;"><img src="./ps4_1.jpg" style="width: 100%;height: 500px;"></div>
+        <div class="animaDiv_3" style="height: 500px;"><img src="./ps4_2.jpg " style="width: 100%;height: 500px;"></div>
+    </div>
+    <p id ="P_X" style="position:relative;font-size: 70;color:rgb(0, 114, 206);" align="center">PS4</p>
+    <p id ="P_S" style="position:relative;font-size: 70;color:rgb(0, 114, 206);" hidden=true  align="center">PS4pro</p>
+
+    <div style="position:relative;top:0px; width: 100%;height: 600px;">
+        <div style="position:relative; width: 100%;height: 100%;">
+            <button class="swtich-button" onclick="changeToX()">PS4</button>
+            <button class="swtich-button" onclick="changeToS()">PS4pro</button>
+            <table id= "table_X" style="position:absolute;" border="0">
+                <tr>
+                    <th style="width: 20%;"><br>CPU</th>
+                    <th style="width: 40%;"><br>由两个主频为1.6G的4核心CPU组成</th>
+                    <th style="width: 40%;"><br>“Jaguar” 8核（x86-64）</th>
+                </tr>
+                <tr>
+                  <th><br>GPU</th>
+                  <th><br>由72个16D浮点运算单元组成（18组，每组4个）</th>
+                  <th><br>Radeon定制品</th>
+                </tr>
+                <tr>
+                    <th><br>内存</th>
+                    <th><br>8GB GDDR5+256MB DDR3</th>
+                    <th><br>CUH-7000: 8GB GDDR5+1GB DDR3</th>
+                </tr>
+                <tr>
+                    <th><br>硬盘存储</th>
+                    <th><br>内置 500 GB</th>
+                    <th><br>存储扩展 支持外置硬盘扩展 纠错 </th>
+                </tr>
+                <tr>
+                    <th><br>光驱</th>
+                    <th><br>读取专用 Blu-ray Disc/DVD/CD光驱</th>
+                    <th><br>DVD  8倍速</th>
+                </tr>
+                <tr>
+                    <th><br>发行售价</th>
+                    <th><br>￥ 2，999.0起</th>
+                    <th><br>发行日期：2013年11月15日</th>
+                </tr>
+              </table>
+            <table id= "table_S" hidden=true style="position:absolute;" border="0">
+                <tr>
+                    <th style="width: 20%;"><br>CPU</th>
+                    <th style="width: 40%;"><br>由两个主频为2.1GHz的4核心CPU组成</th>
+                    <th style="width: 40%;"><br>“Jaguar” 8核（x86-64）</th>
+                  </tr>
+                <tr>
+                  <th><br>GPU</th>
+                  <th><br>由72个16D浮点运算单元组成（18组，每组4个）</th>
+                  <th><br>R36 组运算单元（提升 100%）</th>
+                </tr>
+                <tr>
+                    <th><br>内存</th>
+                    <th><br>8GB GDDR5+256MB DDR3</th>
+                    <th><br>频宽提升至 218GBps</th>
+                </tr>
+                <tr>
+                    <th><br>硬盘存储</th>
+                    <th><br>内置 500 GB</th>
+                    <th><br>存储扩展 支持外置硬盘扩展 纠错</th>
+                </tr>
+                <tr>
+                    <th><br>光驱</th>
+                    <th><br>读取专用 Blu-ray Disc/DVD/CD光驱</th>
+                    <th><br>DVD  8倍速</th>
+                </tr>
+                <tr>
+                    <th><br>发行售价</th>
+                    <th><br>￥ 2，999.0起</th>
+                    <th><br>发行日期：2013年11月15日/th>
+                </tr>
+              </table>
+        </div>
+    </div>
+</div>
+<div style="position:relative;width: 100%;height: 750px;">
+    <div style="width: 100%;height: 650px;;background-color: rgb(121, 121, 118);">
+                <div style="position: relative;height:100%;right: 0px;float:right;z-index: -99px;">
+                    <img id="tupian" src="./蜘蛛侠2.jpg"style="height:100%;" >
+                </div>
+                <div style="position: absolute;top:15%;height:55%;left: 10%;">
+                    <img src="蜘蛛侠1.jfif" style="position:relative;height: 100%;">
+                </div>
+                <div style="position: absolute;top:10%;height:40%;left: 60%;">
+                    <p style="position: relative;top: 25px;left: 0%;font-size: xx-large;"> Marvel's Spider-Man: Miles Moralest</p>    
+                    <p style="position: relative;top: 25px;left: 0%">Be greater. Be yourself.  </p>
+                    <p style="position: relative;top: 25px;left: 0%"    >- 踏上新生代英雄迈尔斯·莫拉莱斯的崛起之路，掌控威力惊人的全新能力，成为独当一面的蜘蛛侠。.</p>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <table border="0" >
+                        <tr>
+                            <th><br>game</th>
+                            <th><br>漫威蜘蛛侠</th>
+                        </tr>
+                        <tr>
+                            <th><br>开发商</th>
+                            <th><br>Insomniac Games</th>
+                        </tr>
+                    </table>
+                   </div>
+            </div>
+</div>
+<div style="position:relative;width: 100%;height: 750px;">
+    <div style="width: 100%;height: 650px;;background-color: rgb(255, 255, 250);">
+                <div style="position: relative;height:100%;right: 0px;float:right;z-index: -99px;">
+                    <img class="gameInfomationBackground" src="刺客信条：英灵殿1.jfif"style="height:100%;" >
+                </div>
+                <div style="position: absolute;top:15%;height:55%;left: 10%;">
+                    <img src="刺客信条：英灵殿4.jfif" style="position:relative;height: 100%;">
+                </div>
+                <div style="position: absolute;top:10%;height:40%;left: 60%;">
+                    <p style="position: relative;top: 25px;left: 0%;font-size: xx-large;"> Assassin's Creed Valhalla</p>    
+                    <p style="position: relative;top: 25px;left: 0%">一位名叫艾沃尔的维京勇士从战斗和荣耀中崛起的故事 </p>
+                    <p style="position: relative;top: 25px;left: 0%">- 在《刺客信条》的新一章中突袭敌人、发展城镇，并建立自己的政治权力.</p>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <table border="0" >
+                        <tr>
+                            <th><br>game</th>
+                            <th><br>刺客信条：英灵殿</th>
+                        </tr>
+                        <tr>
+                            <th><br>开发商</th>
+                            <th><br>Insomniac</th>
+                        </tr>
+                    </table>
+                   </div>
+            </div>
+</div>
+<div style="position:relative;width: 100%;height: 750px;">
+    <div style="width: 100%;height: 650px;;background-color: rgba(94, 222, 245, 0.384);">
+                <div style="position: relative;height:100%;right: 0px;float:right;z-index: -99px;">
+                    <img class="gameInfomationBackground" src="原神1.jfif"style="height:100%;" >
+                </div>
+                <div style="position: absolute;top:15%;height:55%;left: 10%;">
+                    <img src="原神.jpg" style="position:relative;height: 100%;">
+                </div>
+                <div style="position: absolute;top:10%;height:40%;left: 60%;">
+                    <p style="position: relative;top: 25px;left: 0%;font-size: xx-large;"> Genshin Impact</p>    
+                    <p style="position: relative;top: 25px;left: 0%">提瓦特任你自由探索 </p>
+                    <p style="position: relative;top: 25px;left: 0%">- 欢迎来到美丽的梦幻世界提瓦特.</p>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <table border="0" >
+                        <tr>
+                            <th><br>game</th>
+                            <th><br>原神</th>
+                        </tr>
+                        <tr>
+                            <th><br>开发商</th>
+                            <th><br>上海米哈游天命科技有限公司</th>
+                        </tr>
+                    </table>
+                   </div>
+            </div>
+</div>
+<div style="position:relative;width: 100%;height: 750px;">
+    <div style="width: 100%;height: 650px;;background-color: rgb(121, 121, 118);">
+                <div style="position: relative;height:100%;right: 0px;float:right;z-index: -99px;">
+                    <img class="gameInfomationBackground" src="FIFA21-1.jfif "style="height:100%;" >
+                </div>
+                <div style="position: absolute;top:15%;height:55%;left: 10%;">
+                    <img src="FIFA21-2.jfif" style="position:relative;height: 100%;">
+                </div>
+                <div style="position: absolute;top:10%;height:40%;left: 60%;">
+                    <p style="position: relative;top: 25px;left: 0%;font-size: xx-large;"> EA SPORTS FIFA 21t</p>    
+                    <p style="position: relative;top: 25px;left: 0%">尽情享受足球世界！ </p>
+                    <p style="position: relative;top: 25px;left: 0%">- 从街头足球到欧洲冠军联赛（UEFA Champions League）等官方全球联赛，您都能尽情地挑战。</p>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <table border="0" >
+                        <tr>
+                            <th><br>game</th>
+                            <th><br>国际足球21</th>
+                        </tr>
+                        <tr>
+                            <th><br>开发商</th>
+                            <th><br>EA Sports</th>
+                        </tr>
+                    </table>
+                   </div>
+            </div>
+</div>
+</body>
+<script>
+    function paused_all(){
+        Array.prototype.forEach.call(document.getElementsByClassName("animaDiv_1"), function (element) {
+        element.style.animationPlayState="paused"
+        });
+        Array.prototype.forEach.call(document.getElementsByClassName("animaDiv_2"), function (element) {
+        element.style.animationPlayState="paused"
+        });
+        Array.prototype.forEach.call(document.getElementsByClassName("animaDiv_3"), function (element) {
+        element.style.animationPlayState="paused"
+        });
+    }
+	function continue_all(){
+        Array.prototype.forEach.call(document.getElementsByClassName("animaDiv_1"), function (element) {
+        element.style.animationPlayState="running";
+        });
+        Array.prototype.forEach.call(document.getElementsByClassName("animaDiv_2"), function (element) {
+        element.style.animationPlayState="running";
+        });
+        Array.prototype.forEach.call(document.getElementsByClassName("animaDiv_3"), function (element) {
+        element.style.animationPlayState="running";
+        });
+    }
+    $(document).ready(function(){
+        $('.animaDiv_2').zoom();
+        $('.animaDiv_1').zoom();
+        $('.animaDiv_3').zoom();
+    });
+    function changeToX(){
+        document.getElementById("table_X").hidden = false;
+        document.getElementById("table_S").hidden = true;
+
+        document.getElementById("P_X").hidden = false;
+        document.getElementById("P_S").hidden = true;
+
+        document.getElementById("anima_X").hidden = false;
+        document.getElementById("anima_S").hidden = true;
+    }
+    function changeToS(){
+        document.getElementById("table_X").hidden = true;
+        document.getElementById("table_S").hidden = false;
+
+        document.getElementById("P_X").hidden = true;
+        document.getElementById("P_S").hidden = false;
+
+        document.getElementById("anima_X").hidden = true;
+        document.getElementById("anima_S").hidden = false;
+    }
+</script>
+</html>
