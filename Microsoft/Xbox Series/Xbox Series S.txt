@@ -1,0 +1,40 @@
+<tr>
+                  <th><br>CPU</th>
+                  <th><br>8 核心 @ 3.6 GHz (3.4 GHz w/SMT) 定制 Zen 2 CPU</th>
+                  <th><br>最接近的电脑级cpu是r7 3700X</th>
+                </tr>
+                <tr>
+                  <th><br>GPU</th>
+                  <th><br>4 TFLOPS，20 个 CU @1.565 GHz 定制 RDNA 2 GPU</th>
+                  <th><br>最接近的电脑级Gpu是RX 5700</th>
+                </tr>
+                <tr>
+                    <th><br>内存</th>
+                    <th><br>10GB GDDR6 128 位宽总线</th>
+                    <th><br>8GB @ 224 GB/秒, 2GB @ 56 GB/秒.</th>
+                </tr>
+                <tr>
+                    <th><br>硬盘存储</th>
+                    <th><br>512GB 定制 NVME SSD</th>
+                    <th><br>I/O 吞吐量:2.4 GB/s（原始）, 4.8 GB/s（压缩，具有定制硬件解压缩块）</th>
+                </tr>
+                <tr>
+                    <th><br>可扩展的存储</th>
+                    <th><br>支持适用于 Xbox Series X|S 的 1TB Seagate 扩展卡，与内部存储完全符合（需另购）</th>
+                    <th><br>支持 USB 3.1 外部 HDD（需另购）</th>
+                </tr>
+                <tr>
+                    <th><br>游戏分辨率</th>
+                    <th><br>游戏分辨率4K。高动态范围高达 8K HDR。性能最高可达 120 FPS</th>
+                    <th><br>HDMI 功能:自动低延迟模式。HDMI 可变刷新率。AMD FreeSync</th>
+                </tr>
+                <tr>
+                    <th><br>端口与连接</th>
+                    <th><br>1 个 HDMI 2.1 端口。3 个 USB 3.1 Gen 1 端口</th>
+                    <th><br>无线802.11ac 双频</th>
+                </tr>
+                <tr>
+                    <th><br>发行售价</th>
+                    <th><br>￥ 2,399.00起</th>
+                    <th><br>发行日期：2020年11月</th>
+                </tr>
