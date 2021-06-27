@@ -1,0 +1,516 @@
+</div><!DOCTYPE html>
+<html>
+<head>
+    <script src='jquery.min.js'></script>
+    <script src='jqueryzoom.js'></script>
+<style>/*现在都是在CSS里面整活*/
+    div.gameInformation p{  
+        color: white;
+        font-size: 25px; /* 字体大小 */
+    }
+    div{
+        border: 0px solid white;}
+    p{
+        color:white;}
+    body {
+        
+        margin: 0px;   /*设置外边距为0，方便其调试*/
+        padding: 0px;  /*设置内边距为0*/
+        }
+    #tupian{
+        /*-webkit-filter: blur(5px);
+        filter: blur(2px);*/
+        opacity: 0.3;
+    }
+    #nav{
+        background-image: url(huise.jpg);
+    }
+    .login-button { /* 按钮美化 */
+	width: 200px; /* 宽度 */
+	height: 40px; /* 高度 */
+	border-width: 0px; /* 边框宽度 */
+	border-radius: 3px; /* 边框半径 */
+	background: #f57b17; /* 背景颜色 */
+	cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+	outline: none; /* 不显示轮廓线 */
+	font-family: Microsoft YaHei; /* 设置字体 */
+	color: white; /* 字体颜色 */
+	font-size: 17px; /* 字体大小 */
+    }
+    .dropbtn {                           /*定义了导航栏的button*/
+        transition: all 0.2s;            /*设置过渡效果效果时长*/
+        width: 180px;;height:100px;
+        background-color: rgba(9, 156, 71, 0);/*设置背景颜色*/
+        color: rgb(34, 33, 33);
+        padding: 1px;
+        font-size: 25px;/*用于设定字体大小*/
+        border: none;
+        cursor: pointer;/*设置鼠标放上对象时候的鼠标图标，这里设置为pointer*/}
+    .dropdown {                         /*定义的是下拉菜单栏的相关参数，就是上面的导航目录*/
+        text-align: left;/*文本对齐格式*/
+        position: relative;}
+    .dropdown-content {                 /*定义的是下拉菜单的相应的数据*/
+        width: auto;              
+        display: none;                  /*先讲其设定为none，其先不显示*/
+        position: absolute;             /*设定其出现的相对位置*/
+        z-index: 999;                   /*一旦其能显示，则必然显示在最顶层*/
+        left: 0px;top: 100px;
+        background-color:rgba(217, 221, 238, 1);
+        box-shadow: 10px 10px 5px #161616;}
+    .dropdown-content a {               /*设定下拉菜单中的元素的相关参数*/
+        font-size: 20px; /* 字体大小 */
+        width: 150px;
+        color: rgb(11, 153, 248);
+        padding: 8px 10px;
+        text-decoration: none;          /*设定文本的下划线为无*/
+        display: block;}
+    .dropdown-content a:hover {
+        background-color:rgba(255, 255, 255, 0.2)}/*设定其鼠标停在目标上面后的修饰效果*/
+    .dropdown:hover .dropdown-content {
+        display:flex;}                              
+    .dropdown:hover .dropbtn {
+        background-color: rgba(255, 255, 255, 0.0);
+        font-size: 40px;
+        text-decoration:underline;}
+    .login-button:hover { /* 鼠标移入按钮范围时改变颜色 */
+	background: #5599FF;
+    }
+    #img1{
+        position: absolute;
+        animation: move1 8s infinite;}/*设定图片的实现move1函数，并在8s内完成*/
+    #img2{
+        position: absolute;
+        animation: move2 8s infinite;}
+    #img3{
+        position: absolute;
+        animation: move3 8s infinite;}
+    @keyframes move1{
+        0%{left:0px;z-index: 50;width: 70%;}
+        3%{left:30%;z-index: 100;width: 70%;}
+        33%{left:30%;z-index: 100;width: 70%;}
+        36%{left:70%;z-index: 0;width: 30%;}
+        66%{left:70%;z-index: 0;width: 30%;}
+        69%{left:0px;z-index: 50;width: 70%;}
+        100%{left:0px;z-index: 50;width: 70%;}
+    }
+    @keyframes move2{
+        0%{left:30%;z-index: 100;width: 70%;}
+        3%{left:70%;z-index: 0;width: 30%;}
+        33%{left:70%;z-index: 0;width: 30%;}
+        36%{left:0px;z-index: 50;width: 70%;}
+        66%{left:0px;z-index: 50;width: 70%;}
+        69%{left:30%;z-index: 100;width: 70%;}
+        100%{left:30%;z-index: 100;width: 70%;}
+    }
+    @keyframes move3{
+        0%{left:70%;z-index: 0;width: 30%;}
+        3%{left:0px;z-index: 50;width: 70%;}
+        33%{left:0px;z-index: 50;width: 70%;}
+        36%{left:30%;z-index: 100;width: 70%}
+        66%{left:30%;z-index: 100;width: 70%}
+        69%{left:70%;z-index: 0;width: 30%;}
+        100%{left:70%;z-index: 0;width: 30%;}
+    }
+</style>
+</head>
+ 
+<body>
+<div id="background" style="position: fixed;width: 100%;background-color: #d1d5d6;">
+    <img id="tupian"src="bg.gif" style="width: 100%;">
+</div>
+<div id = 'nav' style="position: absolute;left: 0px;top: 0px;width: 100%;height: 100px;display: flex;">
+    <div class="dropdown" style="width: 10%;height: 100px;">
+        <button class="dropbtn"><a href="../../nav/nav.html">Home</a></button></div>
+
+    <div class="dropdown" style="width: 10%;height: 100px;">
+        <button class="dropbtn">Xbox</button>
+        <div class="dropdown-content">
+            <div style="width: 50%;">
+                <a href="../../Microsoft/Xbox/Xbox.html"> Xbox</a>
+                <a href="../../Microsoft/Xbox 360/Xbox 360.html">Xbox 360</a>
+                <a href="../../Microsoft/Xbox one/Xbox One.html">Xbox One</a>   
+                <a href="../../Microsoft/Xbox Series/Xbox Series.html">Xbox Series</a>
+    </div></div></div>
+
+    <div class="dropdown" style="width: 10%;height: 100px;">
+        <button class="dropbtn">Sony</button>
+        <div class="dropdown-content">
+            <div>
+                <a href="../../Sony/ps1/ps1.html">PlayStation</a>
+                <a href="../../Sony/ps2/ps2.html">PlayStation 2</a>
+                <a href="../../Sony/ps3/ps3.html">PlayStation 3</a>
+                <a href="../../Sony/ps4/ps4.html">PlayStation 4</a>  
+                <a href="../../Sony/ps5/ps5.html">PlayStation 5</a>
+    </div></div></div>
+
+    <div class="dropdown" style="width: 10%;height: 100px;">
+        <button class="dropbtn">Nintendo</button>
+        <div class="dropdown-content">
+            <div>
+                <a href="../../Nintendo/Nintendo Switch/Nintendo Switch.html"> Nintendo Switch</a>
+                <a href="../../Nintendo/Wii/Wii.html">Wii</a>
+                <a href="../../Nintendo/超级任天堂/超级任天堂.html">超级任天堂</a>                
+                <a href="../../Nintendo/任天堂64/任天堂64.html">任天堂64</a>
+                <a href="../../Nintendo/任天堂GameCube/任天堂GameCube.html">Wii</a>
+                <a href="../../Nintendo/红白机/红白机.html">红白机</a>
+    </div></div></div>
+
+    <div style="width: 10%;height: 100px;"></div>
+    <div style="width: 10%;height: 100px;"></div>
+    <div style="width: 10%;height: 100px;"></div>
+    <div style="width: 10%;height: 100px;"></div>
+    <div style="width: 10%;height: 100px;"></div>
+    <div class="dropdown" style="width: 10%;height: 100px;">
+        <button class="dropbtn">LogIn</button>
+        <div class="dropdown-content">
+            <div>
+                
+    </div></div></div>
+</div>
+<hr style="position: absolute;left: 0px;top: 90px;height: 0px;width: 100%;">
+<div id="comtent" style="position: relative;top: 130px;width: 70%;left: 15%;height:auto;background-color:rgba(245, 244, 244, 0.829);">
+    <div id="anima" style="position:relative; width: 100%;height:500px;" onmouseover="paused()" onmouseout="continue_()">
+        
+        <div id="img1" style="height: 500px;;">><video id=video src="NS.mp4" controls="controls" poster="./tupian1.jpg" width=100% height=100%></video></div>
+        <div id="img2" style="height: 500px;"><img src="tupian2.jpg" style="width: 100%;height: 500px;"></div>
+        <div id="img3" style="height: 500px;"><img src="tupian3.jpeg" style="width: 100%;height: 500px;"></div>
+    </div>
+    <p style="font-size: 70;color:white;background-color: rgba(240, 29, 29, 0.575);"align="center">Nintendo Switch</p>
+    <div style="position:relative;top:0px; width: 100%;height: 700px;">
+        <div style="position:relative; width: 100%;height: 100%;">
+            <button class="login-button" onclick="changeToX()">Nintendo Switch</button>
+            <button class="login-button" onclick="changeToS()">Nintendo Switch lite</button>
+            <table id= "Xbox Series X" style="position:absolute;width:100%" border="0">
+                <tr>
+                <th style="width: 30%;"><br>中央处理器</th>
+                <th style="width: 35%;"><br>ARMv8</th>
+                <th style="width: 35%;">
+                </tr>
+                <tr>
+                <th><br>系统芯片</th>
+                <th><br>定制版英伟达 Tegra X1</th>
+                </tr>
+                <tr>
+                <th><br>内存（RAM）</th>
+                <th><br>4 GB LPDDR4（旧版）</th>
+                <th><br>4 GB LPDDR4x（新版）</th>
+                </tr>
+                <tr>
+                <th><br>硬盘存储空间</th>
+                <th><br>内置32 GB</th>
+                </tr>
+                <tr>
+                <th><br>图形处理器</th>
+                <th><br>定制版英伟达 Tegra显卡，采用与GeForce相同架构</th>
+                </tr>
+                <tr>
+                <th><br>控制器输入</th>
+                <th><br>Joy-Con</th>
+                <th><br>任天堂Switch Pro控制器</th>
+                </tr>
+                <tr>
+                <th><br>显示</th>
+                <th><br>JDI制 6.2英寸，1280x720像素</th>
+                <th><br>TV输出 ，1920x1080像素</th>
+                </tr>
+                <tr> 
+                <th><br>连接接口</th>
+                <th><br>IEEE 802.11ac  Bluetooth 4.1 USB 3.1 Gen.1 Type-C × 1（主机)</th>
+                <th><br>USB 2.0 × 2（底座）
+                    USB 3.0 × 1（底座）</th>
+                </tr>
+                <tr> 
+                <th><br>重量</th>
+                <th><br>297克（安装Joy-Con后约398克）</th>
+                </tr>
+                <tr> 
+                <th><br>最畅销的游戏</th>
+                <th><br>《马力欧赛车8 豪华版》 （3,539万份)</th>
+                </tr>   
+            </table>
+            <table id= "Xbox Series S" hidden=true style="position:absolute;width:100%" border="0">
+                
+                <th style="width: 30%;"><br>中央处理器</th>
+                <th style="width: 35%;"><br>四核心Cortex-A57 + 四核心Cortex-A53 1.02GHz</th>
+                <th style="width: 35%;">
+                </tr>
+                <tr> 
+                <th><br>系统芯片</th>
+                <th><br>定制版NVIDIA Tegra X1</th>
+                </tr>
+                <tr> 
+                <th><br>内存（RAM）</th>
+                <th><br>4 GB LPDDR4</th>
+                </tr>
+                <tr> 
+                <th><br>硬盘存储空间</th>
+                <th><br>内置32 GB</th>
+                </tr>
+                <tr> 
+                <th><br>图形处理器</th>
+                <th><br>Nvidia Maxwell架构 GM20B 307.2–768 MHz</th>
+                </tr>
+                <tr> 
+                <th><br>控制器输入</th>
+                <th><br>Joy-Con</th>
+                <th><br>任天堂Switch Pro控制器</th>
+                </tr>
+                <tr> 
+                <th><br>显示</th>
+                <th><br>	5.5英寸，1280x720像素</th>
+                </tr>
+                <tr> 
+                <th><br>连接接口</th>
+                <th><br>Wi-Fi 5
+                    Bluetooth 4.1
+                    USB-C（3.0规格</th>
+                </tr>
+                <tr> 
+                <th><br>重量</th>
+                <th><br>	275克</th>
+                </tr>
+                <tr> 
+                <th><br>最畅销的游戏</th>
+                <th><br>《马力欧赛车8 豪华版》 （3,539万份)</th>
+                </tr>            
+            </table>
+        </div>
+    </div>
+</div>
+<div style="position:relative;width: 100%;height: 750px;">
+    <div style="width: 100%;height: 650px;;background-color: rgb(63, 63, 61);">
+                <div style="position: relative;height:100%;right: 0px;float:right;z-index: -99px;">
+                    <img id="tupian" src="z1.jpg"style="height:100%;" >
+                </div>
+                <div style="position: absolute;top:15%;height:55%;left: 10%;">
+                    <img src="z2.jpg" style="position:relative;height: 100%;">
+                </div>
+                <div class="gameInformation" style="position: absolute;top:10%;height:40%;left: 60%;">
+                    <p style="position: relative;top: 25px;left: 0%;font-size: xx-large;"> The Legend of Zelda: Breath of the Wild</p>    
+                    <p style="position: relative;top: 25px;left: 0%">本作是一款开放世界动作冒险游戏，玩家在游戏中操纵主人公林克在海拉鲁王国进行探索 </p>
+                    <p style="position: relative;top: 25px;left: 0%">本作强调非线性玩法，体现在游戏主世界内的区域没有固定的入口和出口</p>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <table border="0" >
+                        <tr>
+                            <th><br>game</th>
+                            <th><br>塞尔达传说 旷野之息</th>
+                        </tr>
+                        <tr>
+                            <th><br>开发商</th>
+                            <th><br>任天堂企划制作本部  Monolith Soft </th>
+                        </tr>
+                    </table>
+                   </div>
+            </div>
+</div>
+<div style="position:relative;width: 100%;height: 750px;">
+    <div style="width: 100%;height: 650px;;background-color: rgb(94, 157, 209);">
+                <div style="position: relative;height:100%;right: 0px;float:right;z-index: -99px;">
+                    <img id="tupian" src="pok3.jpg"style="height:100%;" >
+                </div>
+                <div style="position: absolute;top:15%;height:55%;left: 10%;">
+                    <img src="pok1.jpeg" style="position:relative;height: 100%;">
+                </div>
+                <div class="gameInformation"  style="position: absolute;top:10%;height:40%;left: 60%;">
+                    <p style="position: relative;top: 25px;left: 0%;font-size: xx-large;"> Pokémon Sword & Shield</p>    
+                    <p style="position: relative;top: 25px;left: 0%">主角与其邻居赫普在得到伽勒尔地区的冠军丹帝的推荐信后，与各自的宝可梦展开冒险</p>
+                    <p style="position: relative;top: 25px;left: 0%">并朝着成为当地的宝可梦训练家比赛冠军的目标而展开故事</p>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <table border="0" >
+                        <tr>
+                            <th><br>game</th>
+                            <th><br>宝可梦 剑／盾</th>
+                        </tr>
+                        <tr>
+                            <th><br>开发商</th>
+                            <th><br>Game Freak</th>
+                        </tr>
+                    </table>
+                   </div>
+            </div>
+</div>
+<div style="position:relative;width: 100%;height: 750px;">
+    <div style="width: 100%;height: 650px;;background-color: rgb(144, 179, 199);">
+                <div style="position: relative;height:100%;right: 0px;float:right;z-index: -99px;">
+                    <img id="tupian" src="ds2.jpg"style="height:100%;" >
+                </div>
+                <div style="position: absolute;top:15%;height:55%;left: 10%;">
+                    <img src="ds1.jpg" style="position:relative;height: 100%;">
+                </div>
+                <div class="gameInformation"  style="position: absolute;top:10%;height:40%;left: 60%;">
+                    <p style="position: relative;top: 25px;left: 0%;font-size: xx-large;">Animal Crossing: New Horizons</p>    
+                    <p style="position: relative;top: 25px;left: 0%">《集合啦！动物森友会》是款生活模拟游戏，玩家扮演的角色参与Nook Inc.推出的“无人岛移居计划”，打算展开全新的生活</p>
+                    <p style="position: relative;top: 25px;left: 0%">在游戏，玩家可以搜集树枝、石头、罐子等材料做出许多道具</p>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <table border="0" >
+                        <tr>
+                            <th><br>game</th>
+                            <th><br>集合啦！动物森友会</th>
+                        </tr>
+                        <tr>
+                            <th><br>开发商</th>
+                            <th><br>任天堂企划制作本部</th>
+                        </tr>
+                    </table>
+                   </div>
+            </div>
+</div>
+<div style="position:relative;width: 100%;height: 750px;">
+    <div style="width: 100%;height: 650px;;background-color: rgb(36, 36, 34);">
+                <div style="position: relative;height:100%;right: 0px;float:right;z-index: -99px;">
+                    <img id="tupian" src="dld1.jpg"style="height:100%;" >
+                </div>
+                <div style="position: absolute;top:15%;height:55%;left: 10%;">
+                    <img src="dld1.jpeg" style="position:relative;height: 100%;">
+                </div>
+                <div class="gameInformation"  style="position: absolute;top:10%;height:40%;left: 60%;">
+                    <p style="position: relative;top: 25px;left: 0%;font-size: xx-large;"> Super Smash Bros. Ultimate</p>    
+                    <p style="position: relative;top: 25px;left: 0%">本次游戏收录了系列所有曾出现的角色供玩家使用。 </p>
+                    <p style="position: relative;top: 25px;left: 0%">在原有系统基础新增了“命魂”系统，允许玩家在操控主要角色时还可以使用“命魂”角色辅助玩家</p>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <table border="0" >
+                        <tr>
+                            <th><br>game</th>
+                            <th><br>任天堂明星大乱斗 特别版</th>
+                        </tr>
+                        <tr>
+                            <th><br>开发商</th>
+                            <th><br>万代南梦宫</th>
+                        </tr>
+                    </table>
+                   </div>
+            </div>
+</div>
+<div style="position:relative;width: 100%;height: 750px;">
+    <div style="width: 100%;height: 650px;;background-color: rgb(157, 185, 216);">
+                <div style="position: relative;height:100%;right: 0px;float:right;z-index: -99px;">
+                    <img id="tupian" src="xb2.jpg"style="height:100%;" >
+                </div>
+                <div style="position: absolute;top:15%;height:55%;left: 10%;">
+                    <img src="xb1.jpg" style="position:relative;height: 100%;">
+                </div>
+                <div class="gameInformation"  style="position: absolute;top:10%;height:40%;left: 60%;">
+                    <p style="position: relative;top: 25px;left: 0%;font-size: xx-large;"> Xenoblade Chronicles 2</p>    
+                    <p style="position: relative;top: 25px;left: 0%">以矗立于天空之中的世界树为中心的云海世界，名为“幽界”</p>
+                    <p style="position: relative;top: 25px;left: 0%">人类曾在幽界伊始之时，在世界树之上与造物之神共同生活</p>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <table border="0" >
+                        <tr>
+                            <th><br>game</th>
+                            <th><br>异度神剑2</th>
+                        </tr>
+                        <tr>
+                            <th><br>开发商</th>
+                            <th><br>Monolith Soft</th>
+                        </tr>
+                    </table>
+                   </div>
+            </div>
+</div>
+<div style="position:relative;width: 100%;height: 750px;">
+    <div style="width: 100%;height: 650px;;background-color: rgb(36, 36, 34);">
+                <div style="position: relative;height:100%;right: 0px;float:right;z-index: -99px;">
+                    <img id="tupian" src="whr2.jpg"style="height:100%;" >
+                </div>
+                <div style="position: absolute;top:15%;height:55%;left: 10%;">
+                    <img src="whr1.jpeg" style="position:relative;height: 100%;">
+                </div>
+                <div class="gameInformation"  style="position: absolute;top:10%;height:40%;left: 60%;">
+                    <p style="position: relative;top: 25px;left: 0%;font-size: xx-large;"> Monster Hunter Rise</p>    
+                    <p style="position: relative;top: 25px;left: 0%">本作是继《怪物猎人XX》后再度登陆任天堂Switch上的怪物猎人系列作品</p>
+                    <p style="position: relative;top: 25px;left: 0%">玩家可以体验4个任务，并熟悉本作新加入的“翔虫”、“驭龙”等要素</p>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <table border="0" >
+                        <tr>
+                            <th><br>game</th>
+                            <th><br>怪物猎人 崛起</th>
+                        </tr>
+                        <tr>
+                            <th><br>开发商</th>
+                            <th><br>卡普空</th>
+                        </tr>
+                    </table>
+                   </div>
+            </div>
+</div>
+<div style="position:relative;width: 100%;height: 750px;">
+    <div style="width: 100%;height: 650px;;background-color: rgb(36, 36, 34);">
+                <div style="position: relative;height:100%;right: 0px;float:right;z-index: -99px;">
+                    <img id="tupian" src="tg2.jpg"style="height:100%;" >
+                </div>
+                <div style="position: absolute;top:15%;height:55%;left: 10%;">
+                    <img src="tg1.jpeg" style="position:relative;height: 100%;">
+                </div>
+                <div class="gameInformation"  style="position: absolute;top:10%;height:40%;left: 60%;">
+                    <p style="position: relative;top: 25px;left: 0%;font-size: xx-large;"> 太鼓の達人</p>    
+                    <p style="position: relative;top: 25px;left: 0%">游戏玩法与科乐美的Bemani系列类似，玩家需要配合音乐</p>
+                    <p style="position: relative;top: 25px;left: 0%">敲打街机上的日本传统乐器“太鼓”的框体，从而打出正确的节奏</p>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <table border="0" >
+                        <tr>
+                            <th><br>game</th>
+                            <th><br>太鼓达人</th>
+                        </tr>
+                        <tr>
+                            <th><br>开发商</th>
+                            <th><br>科乐美</th>
+                        </tr>
+                    </table>
+                   </div>
+            </div>
+</div>
+</body>
+<script>
+    function paused(){
+        document.getElementById("img1").style.animationPlayState="paused";
+        document.getElementById("img2").style.animationPlayState="paused";
+        document.getElementById("img3").style.animationPlayState="paused";
+    }
+	function continue_(){
+        document.getElementById("img1").style.animationPlayState="running";
+        document.getElementById("img2").style.animationPlayState="running";
+        document.getElementById("img3").style.animationPlayState="running";
+    }
+    $(document).ready(function(){
+        $('#img1').zoom();
+        $('#img2').zoom();
+        $('#img3').zoom();
+    });
+    function changeToX(){
+        document.getElementById("Xbox Series X").hidden = false;
+        document.getElementById("Xbox Series S").hidden = true;
+    }
+    function changeToS(){
+        document.getElementById("Xbox Series X").hidden = true;
+        document.getElementById("Xbox Series S").hidden = false;
+    }
+</script>
+</html>
