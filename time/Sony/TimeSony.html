@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        div{
+            border: 0px solid rgb(247, 247, 247);}
+        p{
+            color: white;}
+        body {
+            background: #222;
+            font-family: Georgia, serif;
+            color: #fff;
+            margin: 0px;
+            padding: 0px;}
+        a {
+            color: #ffffcc;
+            text-decoration: none;
+            -webkit-transition: 0.5s;
+            -moz-transition: 0.5s;
+            -o-transition: 0.5s;
+            -ms-transition: 0.5s;
+            transition: 0.5s;
+        }
+        #tupian{
+            width: 600px;
+            height: 400px;
+            margin: 0cm 0cm 0cm 0cm;
+    
+        }
+        a:hover,
+        a.selected {
+            color: #ffcc00;
+        }
+    
+        h1{
+            text-align: center;
+            color: #ccc;
+            text-shadow: #000 1px 1px 2px;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+        #timeline {
+            width: 1000px;
+            height: 800px;
+            overflow: hidden;
+            margin: 150px auto;
+            position: relative;
+            background: url('dot.gif') 43px top repeat-y;
+            left: 5%;
+        }
+        #dates {
+            width: 300px;
+            height: 1000px;
+            overflow: hidden;
+            float: left;
+        }
+        #dates li {
+            list-style: none;
+            width: 200px;
+            height: 150px;
+            line-height: 150px;
+            font-size: 39px;
+            padding-left: 10px;
+            background: url('biggerdot.png') left center no-repeat;
+        }
+        
+      
+        
+        #issues {
+            width: 620px;
+            height: 1200px;
+            overflow: hidden;
+            float:left;
+        }	
+        #issues li {
+            max-width: 800px;
+            height: 1200px;
+            list-style: none;
+            text-align: center; 
+    
+        }
+        #issues li h1 {
+            color: #ffcc00;
+            font-size: 100px;
+            text-align: center;
+            text-shadow: #000 1px 1px 2px;
+        }
+        #issues li p {
+            font-size: 20px;
+            margin: 10px 20px;
+            font-weight: normal;
+            line-height: 50px;
+            text-shadow: #000 1px 1px 2px;
+        }
+        
+        .dropbtn {
+            transition: all 0.2s;
+            width: 180px;;height:100px;
+            background-color: rgba(9, 156, 71, 0);
+            color: white;
+            padding: 0px;
+            font-size: 25px;
+            border: none;
+            cursor: pointer;}
+        .dropdown {
+            text-align: left;
+            position: relative;}
+        .dropdown-content {
+            width: auto;
+            display: flex;
+            display: none;
+            position: absolute;
+            left: 0px;top: 100px;
+            background-color:rgba(255, 255, 255, 0.2);
+            box-shadow: 10px 10px 5px #161616;}
+        .dropdown-content a {
+            font-size: 20px; /* 字体大小 */
+            width: 150px;
+            color: white;
+            padding: 8px 10px;
+            text-decoration: none;
+            display: block;}
+        .dropdown-content a:hover {
+            background-color:rgba(255, 255, 255, 0.2)}
+        .dropdown:hover .dropdown-content {
+            display:flex;}
+        .dropdown:hover .dropbtn {
+            background-color: rgba(255, 255, 255, 0.0);
+            font-size: 40px;
+            text-decoration:underline;}
+    </style>
+</head>
+ 
+<body>
+    <div id = 'nav' style="position: absolute;left: 0px;top: 0px;width: 100%;height: 100px;display: flex;">
+        <div class="dropdown" style="width: 10%;height: 100px;">
+            <button class="dropbtn"><a href="../../nav/nav.html">Home</a></button></div>
+        <div class="dropdown" style="width: 10%;height: 100px;">
+            <button class="dropbtn">Xbox</button>
+            <div class="dropdown-content">
+                <div style="width: 50%;">
+                    <a href="../../Microsoft/Xbox/Xbox.html"> Xbox</a>
+                    <a href="../../Microsoft/Xbox 360/Xbox 360.html">Xbox 360</a>
+                    <a href="../../Microsoft/Xbox one/Xbox One.html">Xbox One</a>   
+                    <a href="../../Microsoft/Xbox Series/Xbox Series.html">Xbox Series</a>
+        </div></div></div>
+
+        <div class="dropdown" style="width: 10%;height: 100px;">
+            <button class="dropbtn">Sony</button>
+            <div class="dropdown-content">
+                <div>
+                    <a href="../../Sony/ps1/ps1.html">PlayStation</a>
+                    <a href="../../Sony/ps2/ps2.html">PlayStation 2</a>
+                    <a href="../../Sony/ps3/ps3.html">PlayStation 3</a>
+                    <a href="../../Sony/ps4/ps4.html">PlayStation 4</a>  
+                    <a href="../../Sony/ps5/ps5.html">PlayStation 5</a>
+        </div></div></div>
+
+        <div class="dropdown" style="width: 10%;height: 100px;">
+            <button class="dropbtn">Nintendo</button>
+            <div class="dropdown-content">
+                <div>
+                    <a href="../../Nintendo/Nintendo Switch/Nintendo Switch.html"> Nintendo Switch</a>
+                    <a href="../../Nintendo/Wii/Wii.html">Wii</a>
+                    <a href="../../Nintendo/超级任天堂/超级任天堂.html">超级任天堂</a>                
+                    <a href="../../Nintendo/任天堂64/任天堂64.html">任天堂64</a>
+                    <a href="../../Nintendo/任天堂GameCube/任天堂GameCube.html">Wii</a>
+                    <a href="../../Nintendo/红白机/红白机.html">红白机</a>
+        </div></div></div>
+
+        <div style="width: 10%;height: 100px;"></div>
+        <div style="width: 10%;height: 100px;"></div>
+        <div style="width: 10%;height: 100px;"></div>
+        <div style="width: 10%;height: 100px;"></div>
+        <div style="width: 10%;height: 100px;"></div>
+        <div class="dropdown" style="width: 10%;height: 100px;">
+            <button class="dropbtn">LogIn</button>
+            <div class="dropdown-content">
+                <div>
+                    
+        </div></div></div>
+    </div>
+    <hr style="position: absolute;left: 0px;top: 80px;height: 0px;width: 98%;">
+    <div id="timeline">
+        <ul id="dates">
+            <li><a href="#1994">1994</a></li>
+            <li><a href="#2000">2000</a></li>
+            <li><a href="#2006">2006</a></li>
+            <li><a href="#2013">2013</a></li>
+            <li><a href="#2020">2020</a></li>
+        </ul>
+        <ul id="issues">
+            <li id="1994" >
+                <div id="tupian"><a href="../../Sony/ps1/ps1.html"><img src="ps1.png" style="height: 100%;width: 100%;"/> </a>             
+                </div>
+                <h1>1994</h1>
+                <p>PlayStation（日语：プレイステーション，官方缩写为“PS”，通常被称为“PS1”或其代号“PSX”）是由索尼电脑娱乐（现索尼互动娱乐）开发和发售的家用游戏机。 </p>
+            </li>
+            <li id="2000">                
+                <div id="tupian"><a href="../../Sony/ps2/ps2.html"><img src="PS2-Versions.png" style="height: 100%;width: 100%;"/></a></div>
+                <h1>2000</h1>
+                <p>PlayStation 2（简称PS2）是索尼电脑娱乐（现索尼互动娱乐）在2000年3月4日开始贩售的家用游戏机。在中国大陆，索尼（中国）的行销口号是：“△○✕□，很有PS风格的感觉”。</p>
+            </li>
+            <li id="2006">
+                <div id="tupian"><a href="../../Sony/ps3/ps3.html"><img src="ps3.png" style="height: 100%;width: 100%;"/></a></div>
+                <h1>2006</h1>
+                <p>PlayStation 3（官方缩写：PS3）是索尼电子娱乐推出的家用电子游戏机。PlayStation 3与前代机种的差异之处之一，是提供称为“PlayStation Network”的整合网络游戏服务</p>
+            </li>
+            <li id="2013">
+                
+                <div id="tupian"><a href="../../Sony/ps4/ps4.html"><img src="PS4-Console-wDS4.png" style="height: 100%;width: 100%;"/></a></div>
+                <h1>2013</h1>
+                <p>PlayStation 4（官方缩写：PS4）是索尼互动娱乐推出的家用电子游戏机，2013年11月15日于北美首度贩售。本机作为PlayStation 3的续作机型，于电子游戏史中为第八世代机种。 </p>
+            </li>
+            <li id="2020">
+                
+                <div id="tupian"><a href="../../Sony/ps5/ps5.html"><img src="psp5.png" style="height: 100%;width: 100%;"/></div>
+                <h1>2020</h1>
+                <p>layStation 5（官方缩写：PS5）是索尼互动娱乐于2020年11月12日上市的家用电子游戏机,在硬件上比前代PS4有大幅的提升，使用了PCIe 4.0规格的高速定制固态硬盘和AMD的定制处理器。</p>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
