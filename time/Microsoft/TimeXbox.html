@@ -22,9 +22,9 @@
             transition: 0.5s;
         }
         #tupian{
-            width: 600px;
-            height: 400px;
-            margin: 0cm 0cm 0cm 0cm;
+            width: 400px;
+            height: 300px;
+            margin: 0cm 0cm 3cm 0cm;
     
         }
         a:hover,
@@ -49,25 +49,27 @@
         }
         #dates {
             width: 300px;
-            height: 1000px;
+            height: 800px;
             overflow: hidden;
             float: left;
         }
         #dates li {
             list-style: none;
             width: 200px;
-            height: 130px;
-            line-height: 130px;
-            font-size: 39px;
+            height: 200px;
+            line-height: 200px;
+            font-size: 50px;
             padding-left: 10px;
             background: url('biggerdot.png') left center no-repeat;
         }
         
-   
+        #dates .selected {
+            font-size: 100px;
+        }
         
         #issues {
-            width: 620px;
-            height: 1200px;
+            width: 400px;
+            height: 600px;
             overflow: hidden;
             float:right;
         }	
@@ -182,7 +184,7 @@
     <hr style="position: absolute;left: 0px;top: 80px;height: 0px;width: 98%;">
     <div id="timeline">
         <ul id="dates">
-            <li><a href="#2001">2001</a></li>
+            <li><a href="#2001" class="selected">2001</a></li>
             <li><a href="#2005">2005</a></li>
             <li><a href="#2013">2013</a></li>
             <li><a href="#2017">2017</a></li>
@@ -190,7 +192,7 @@
             <li><a href="#2020">2020</a></li>
         </ul>
         <ul id="issues">
-            <li id="2001">
+            <li id="2001" class="selected">
 
                 <div id="tupian"><a href="../../Microsoft/Xbox/Xbox.html"><img src="xbox.png" style="height: 100%;width: 100%;"/></a>
                 </div>
@@ -225,5 +227,16 @@
         </ul>
     </div>
 </body>
+<script src='./jquery.min.js'></script>
+<script src='./timelinr-0.9.54.js'></script>
 
+<script >$(function(){
+    $().timelinr({
+        orientation: 	'vertical',
+        issuesSpeed: 	300,
+        datesSpeed: 	100,
+        arrowKeys: 		'true',
+        startAt:		2
+    })
+});</script>
 </html>
